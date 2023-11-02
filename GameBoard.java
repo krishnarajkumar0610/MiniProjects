@@ -26,19 +26,20 @@ public class GameBoard {
             }
             else{
                 board[row][colm]=let;
-                dispay(board,let);
+                dispay(true,board,let);
                 break;
             }
         }
     }
-    public static void dispay(String[][] board,String let){
+    public static void dispay(boolean b,String[][] board,String let){
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[i].length;j++){
                 System.out.print(board[i][j]+" | ");
             }
             System.out.println();
         }
-        checkRow(let);
+        if(b)
+            checkRow(let);
     }
     public static void checkRow(String let){
         int count=0;
@@ -133,7 +134,8 @@ public class GameBoard {
         String[] let = {"x","y"};
         if(opt.equals("yes")){
             int n=1;
-            for(int i=0;i<g.board.length*g.board.length;i++){
+            dispay(false,board,"x");
+            for(int i=0;i<board.length*board.length;i++){
                 if(n>2)
                     n=1;
                 System.out.println("Player "+n+" turn");
