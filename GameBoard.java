@@ -1,10 +1,7 @@
 // This is Simple X_O game.
 // used util package
-package x_o_game;
 import java.util.*;
-
 public class GameBoard {
-
     static String[][] board = new String[3][3];
     GameBoard(){
         for(int i=0;i<board.length;i++){
@@ -15,27 +12,33 @@ public class GameBoard {
     }
     public static void play(String let){
         Scanner sc = new Scanner(System.in);
-        while(true){
-            System.out.print("Enter row to store "+let+" :");
-            int row = sc.nextInt();
-            --row;
-            System.out.print("Enter column to store "+let+" :");
-            int colm = sc.nextInt();
-            --colm;
-            if(board[row][colm].equals("x") || board[row][colm].equals("y")){
-                System.out.println("Enter valid position to store "+let);
-            }
-            else{
-                board[row][colm]=let;
-                dispay(true,board,let);
-                break;
+        while(true) {
+            try {
+                System.out.print("Enter row to store " + let + " :");
+                int row = sc.nextInt();
+                --row;
+                System.out.print("Enter column to store " + let + " :");
+                int colm = sc.nextInt();
+                --colm;
+                if (board[row][colm].equals("x") || board[row][colm].equals("y")) {
+                    System.out.println("Enter valid position to store " + let);
+                } else {
+                    board[row][colm] = let;
+                    dispay(true, board, let);
+                    break;
+                }
+            }catch(Exception e){
+                System.out.println("------------------------------------------");
+                System.out.println("Invalid Positions....");
+                System.out.println("Enter valid positions to store "+let);
+                System.out.println("------------------------------------------");
             }
         }
     }
     public static void dispay(boolean b,String[][] board,String let){
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[i].length;j++){
-                System.out.print(board[i][j]+" | ");
+                System.out.print(" | "+board[i][j]+" | ");
             }
             System.out.println();
         }
@@ -130,22 +133,30 @@ public class GameBoard {
         Scanner in = new Scanner(System.in);
         GameBoard g = new GameBoard();
         System.out.println("**********Play game**********");
-        System.out.print("Yes or No : ");
-        String opt = in.next().toLowerCase();
-        String[] let = {"x","y"};
-        if(opt.equals("yes")){
-            int n=1;
-            dispay(false,board,"x");
-            for(int i=0;i<board.length*board.length;i++){
-                if(n>2)
-                    n=1;
-                System.out.println("Player "+n+" turn");
-                play(let[n-1]);
-                n++;
+        while (true) {
+            try {
+                System.out.print("Yes or No : ");
+                String opt = in.next().toLowerCase();
+                String[] let = {"x", "y"};
+                if (opt.equals("yes")) {
+                    int n = 1;
+                    dispay(false, board, "x");
+                    for (int i = 0; i < board.length * board.length; i++) {
+                        if (n > 2)
+                            n = 1;
+                        System.out.println("Player " + n + " turn");
+                        play(let[n - 1]);
+                        n++;
+                    }
+                    break;
+                }
+                else if (opt.equals("yes")) {
+                    System.out.println("Go back to Home Page");
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("Enter valid opition");
             }
-        }
-        else{
-            System.out.println("Go back to Home page");
         }
     }
 }
