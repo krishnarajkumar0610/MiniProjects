@@ -17,8 +17,10 @@ public class GameBoard {
         while(true){
             System.out.print("Enter row to store "+let+" :");
             int row = sc.nextInt();
+            --row;
             System.out.print("Enter column to store "+let+" :");
             int colm = sc.nextInt();
+            --colm;
             if(board[row][colm].equals("x") || board[row][colm].equals("y")){
                 System.out.println("Enter valid position to store "+let);
             }
@@ -125,7 +127,7 @@ public class GameBoard {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         GameBoard g = new GameBoard();
-        System.out.println("Play game");
+        System.out.println("**********Play game**********");
         System.out.print("Yes or No : ");
         String opt = in.next().toLowerCase();
         String[] let = {"x","y"};
