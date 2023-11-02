@@ -40,7 +40,7 @@ public class GameBoard {
             for(int j=0;j<board[i].length;j++){
                 System.out.print(" | "+board[i][j]+" | ");
             }
-            System.out.println();
+            System.out.println("\n");
         }
         if(b)
             checkRow(let);
@@ -137,7 +137,7 @@ public class GameBoard {
             try {
                 System.out.print("Yes or No : ");
                 String opt = in.next().toLowerCase();
-                String[] let = {"x", "y"};
+                String[] let = {"x", "o"};
                 if (opt.equals("yes")) {
                     int n = 1;
                     dispay(false, board, "x");
