@@ -150,7 +150,7 @@ public class GameBoard {
                     }
                     break;
                 }
-                else if (opt.equals("yes")) {
+                else if (opt.equals("no")) {
                     System.out.println("Go back to Home Page");
                     break;
                 }
